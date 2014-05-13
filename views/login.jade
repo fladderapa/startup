@@ -1,0 +1,21 @@
+extends layout
+
+block content
+	.modal.show#loginModal(tabindex="-1", role="dialog", aria-hidden="true")
+		.modal-dialog
+			.modal-content
+				.modal-header
+					h1.text-center Logga in
+				.modal-body
+					form.form.col-md-12.center-block(action="/admin", method="POST")
+						.form-group
+							input.form-control.input-lg(type="text", name="username", placeholder="Användarnamn")
+						.form-group
+							input.form-control.input-lg(type="password", name="password", placeholder="Lösenord")
+						.form-group
+							button.btn.btn-primary.btn-lg.btn-block Logga in
+				.modal-footer
+					.col-md-12
+
+
+		
