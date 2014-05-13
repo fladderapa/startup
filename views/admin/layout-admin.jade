@@ -1,33 +1,31 @@
 html.no-js
-  head
-    meta(charset="utf-8")
-    meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
-    base(href="/")
-    title
-    meta(name="description", content="")
-    meta(name="viewport", content="width=device-width")
-    link(rel="stylesheet", href="/css/admin.css")
-    
-  body
-    .navbar.navbar-inverse.navbar-top
-        .container
-            .navbar-header
-                button.navbar-toggle(type="button", data-toggle="collapse", data-target=".navbar-collapse")
-                    span.icon-bar
-                    span.icon-bar
-                    span.icon-bar
-                .collapse.navbar-collapse
-                    ul.nav.navbar-nav
-                        li.active
-                            a(href="/admin") Meny
-                        li
-                            a(href="/admin") Meny2
-                        li
-                            a(href="/admin") Meny3
-    block content    
-
-   
-    script(src='/bower_components/jquery/dist/jquery.js')
-    script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
-    script(src="/js/main.js")
-    
+	head
+		meta(charset="utf-8")
+		meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
+		base(href="/")
+		title
+		meta(name="description", content="")
+		meta(name="viewport", content="width=device-width")
+		link(rel="stylesheet", href="/css/admin.css")
+		
+	body
+		.navbar.navbar-inverse.navbar-top
+				.container
+						.navbar-header
+								button.navbar-toggle(type="button", data-toggle="collapse", data-target=".navbar-collapse")
+										span.icon-bar
+										span.icon-bar
+										span.icon-bar
+								.collapse.navbar-collapse
+										ul.nav.navbar-nav
+												li.active
+														a(href="/admin") Text
+												li
+														a(href="/admin") Prices
+												li
+														a(href="/admin") Blog
+		block content    
+		script(src='/bower_components/jquery/dist/jquery.js')
+		script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
+		script(src="/js/main.js")
+		

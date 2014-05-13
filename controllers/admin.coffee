@@ -1,7 +1,7 @@
 bucket = require("bucket-node").bucket
 _      = require "underscore"
 
-
+# LOGIN
 exports.login = (req, res) ->
 	res.render("login")
 
@@ -22,5 +22,14 @@ exports.authenticateAdmin = (req, res, next) ->
 	else
 		res.redirect "/admin"
 
+
+#ADMIN SITE
+
 exports.index = (req, res) ->
-	res.render("admin/index")
+	aboutUs = bucket.where {type: "aboutUs"}
+	res.render("admin/index", aboutUs)
+		
+
+
+
+
