@@ -10,16 +10,13 @@ block content
 						.row
 							</br>
 							.col-md-2.col-sm-3.text-center
-								button.btn.btn-info.btn-block(style="margin-top: 75px;") Edit
+								a(href="/admin/edit/#{aboutUs.id}")
+									button.btn.btn-info.btn-block(style="margin-top: 75px;") Edit
 							.col-md-10.col-sm-9
-								h2 About us
+								h2 #{aboutUs.title}
 								.row
 									.col-xs-9
-										p
-											|Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-											|Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-											|dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-											|Aliquam in felis sit amet augue.
+										p 	#{aboutUs.text}
 									.col-xs-3
 	.container
 		.row
@@ -29,16 +26,13 @@ block content
 						.row
 							</br>
 							.col-md-2.col-sm-3.text-center
-								button.btn.btn-info.btn-block(style="margin-top: 75px;") Edit
+								a(href="/admin/edit/#{contact.id}")
+									button.btn.btn-info.btn-block(style="margin-top: 75px;") Edit
 							.col-md-10.col-sm-9
-								h2 Contact
+								h2 #{contact.title}
 								.row
 									.col-xs-9
-										p
-											|Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-											|Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-											|dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-											|Aliquam in felis sit amet augue.
+										p 	#{contact.text}
 									.col-xs-3
 	.container
 		.row
@@ -48,16 +42,13 @@ block content
 						.row
 							</br>
 							.col-md-2.col-sm-3.text-center
-								button.btn.btn-info.btn-block(style="margin-top: 75px;") Edit
+								a(href="/admin/edit/#{other.id}")
+									button.btn.btn-info.btn-block(style="margin-top: 75px;") Edit
 							.col-md-10.col-sm-9
-								h2 Other
+								h2 #{other.title}
 								.row
 									.col-xs-9
-										p
-											|Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-											|Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-											|dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-											|Aliquam in felis sit amet augue.
+										p 	#{other.text}
 									.col-xs-3
 		
 

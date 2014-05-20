@@ -1,0 +1,19 @@
+extends layout-admin
+
+block content
+  .container
+    .edit
+      h2 Editera sida: #{textPost.title}
+      form(action="", method="POST")
+        .form-group.row
+          .col-md-6
+            p
+              label(for='title') Titel
+              input.form-control(type="text", name="title", id="title", value=textPost.title)
+        .form-group
+          label(for='txt-editor') Innehåll
+          input.form-control(type="hidden", name="type", id="title", value=textPost.type)
+
+          p
+            textarea.form-control#txt-editor(name="text", rows="7")!=textPost.text
+        input.btn.btn-large.btn-info(type="submit", id="saveBlog", value="Spara")

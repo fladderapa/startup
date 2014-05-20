@@ -1,33 +1,73 @@
 bucket = require("bucket-node").bucket
 _      = require "underscore"
-
-# LOGIN
-exports.login = (req, res) ->
-	res.render("login")
+flash = require "connect-flash"
 
 
-exports.loginAdmin = (req, res) ->
-	username = req.body.username
-	password = req.body.password
-	user = bucket.findWhere {type: "adminUser", name: username, password: password}
-	if user? && _.contains user.permissions, "ksite"
-		req.session.user = user
-		res.redirect ("/admin/index")
-	else
-		res.redirect "/admin"
+#ADMIN SITE
 
 exports.authenticateAdmin = (req, res, next) ->
 	if req.session.user?
 		next()
 	else
 		res.redirect "/admin"
-
-
-#ADMIN SITE
-
+		
 exports.index = (req, res) ->
 	aboutUs = bucket.where {type: "aboutUs"}
-	res.render("admin/index", aboutUs)
+	contact = bucket.where {type: "contact"}
+	other = bucket.where {type: "other"}
+	
+	if aboutUs.length > 0  and contact.length > 0 and other.length > 0
+		res.render "admin/index",
+			aboutUs: aboutUs.pop()
+			contact: contact.pop()
+			other: other.pop()
+	else if aboutUs.length == 0
+		storePost "Lorem ipsum..", "Title", "aboutUs", "new", (err) ->
+		exports.index req, res
+	else if contact.length == 0
+		storePost "Lorem ipsum..", "Title", "contact", "new", (err) ->
+		exports.index req, res
+	else if other.length == 0
+		storePost "Lorem ipsum..", "Title", "other", "new", (err) ->
+		exports.index req, res
+
+exports.edit = (req, res) ->
+  Id = req.params.id
+  textPost = bucket.getById(Id)
+
+  res.render "admin/edit",
+    textPost: textPost
+
+
+storePost = (text, title, type, id, callback) ->
+	if id = "new"
+		blogPost = {}
+		blogPost = {type: type}
+		blogPost = _.extend(blogPost, {title: title, text: text})
+		bucket.set(blogPost)
+		bucket.store (err) ->
+			callback(err)
+	else
+		blogPost = bucket.getById(id:id)
+		blogPost = _.extend(blogPost, {title: title, text: text, type: type, id:id})
+		bucket.set (blogPost)
+		bucket.store (err) ->
+			callback(err)
+
+exports.savePost = (req, res) ->
+	text = req.body.text
+	title = req.body.title
+	type = req.body.type
+	id = req.params.id
+
+	storePost text, title, type, id, (err) ->
+		if err?
+			req.flash('info', 'Something went wrong when saving blog post.')
+		else
+			req.flash('info', 'Saved.')
+		exports.index req, res
+
+
 		
 
 

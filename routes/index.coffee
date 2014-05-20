@@ -5,9 +5,11 @@ admin = require("../controllers/admin")
 
 exports.init = (app) ->
   app.get "/", index.index
-  app.get "/admin", admin.login
-  app.post "/admin", admin.loginAdmin
+  app.get "/admin", index.login
+  app.post "/admin", index.loginAdmin
   app.get "/admin/index", admin.authenticateAdmin, admin.index
+  app.get "/admin/edit/:id", admin.authenticateAdmin, admin.edit
+  app.post "/admin/edit/:id", admin.authenticateAdmin, admin.savePost
    
   app.use (req, res, next) ->
     err = new Error("Not Found")

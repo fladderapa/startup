@@ -9,6 +9,7 @@ require("bucket-node").initSingletonBucket 'k-stack.db', (data) ->
   bodyParser = require("body-parser")
   routes = require("./routes/index")
   session  = require("express-session")
+  flash  = require "connect-flash"
   app = express()
 
   #console.log process.env.NODE_ENV
@@ -25,6 +26,7 @@ require("bucket-node").initSingletonBucket 'k-stack.db', (data) ->
     key: "sid"
     cookie:
       secure: false)
+  app.use flash()
   app.use require("coffee-middleware")(src: path.join(__dirname, "public"))
   app.use require("less-middleware")(path.join(__dirname, "public"),
     parser:

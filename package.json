@@ -16,6 +16,7 @@
     "async": "*",
     "underscore": "",
     "express-session": "",
+    "connect-flash": "0.1.0",
     "bucket-node": "KONDENSATOR/bucket-node"
   },
   "devDependencies": {
